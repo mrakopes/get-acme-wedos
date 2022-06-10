@@ -15,7 +15,17 @@ _exists() {
   return $ret
 }
 
+if [ -z "$BRANCH" ]; then
+  BRANCH="main"
+fi
 
+INSTALL_URL="https://raw.githubusercontent.com/mrakopes/get-acme-wedos/$BRANCH/install.sh"
 
-echo "hello world"
-
+if _exists curl; then
+  curl "$INSTALL_URL" | sh -s "$@"
+elif _exists wget ; then
+  wget -O - "$INSTALL_URL" | sh -s "$@"
+else
+  echo "Sorry, you must have curl or wget installed first."
+  echo "Please install either of them and try again."
+fi
