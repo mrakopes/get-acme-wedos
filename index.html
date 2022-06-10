@@ -1,1 +1,21 @@
-<h1>Hello world</h1>
+#!/usr/bin/env sh
+
+_exists() {
+  cmd="$1"
+  if [ -z "$cmd" ] ; then
+    echo "Usage: _exists cmd"
+    return 1
+  fi
+  if type command >/dev/null 2>&1 ; then
+    command -v $cmd >/dev/null 2>&1
+  else
+    type $cmd >/dev/null 2>&1
+  fi
+  ret="$?"
+  return $ret
+}
+
+
+
+echo "hello world"
+
