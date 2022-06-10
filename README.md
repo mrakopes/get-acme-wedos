@@ -30,5 +30,5 @@ curl https://mrakopes.github.io/get-acme-wedos/  | sh
 
 # update
 ```
-curl https://mrakopes.github.io/get-acme-wedos/  | sh -s --update
+curl https://mrakopes.github.io/get-acme-wedos/  | sh -s -- --update
 ```
